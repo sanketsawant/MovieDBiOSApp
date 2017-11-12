@@ -8,16 +8,17 @@
 
 import Foundation
 import Alamofire
+import ObjectMapper
 
 class MovieViewModel {
     var movies: [Movie] = []
     var movie: Movie?
     
     func getMovies(completion: @escaping (Bool) -> Void) {
-        var urlString = "\(Constants.urlPoint)/language=en-US/api_key=\(Constants.apiKey)"
-        Alamofire.request("https://httpbin.org/get")
-//        Alamofire.z
-        
-        
+        let urlString = "\(Constants.urlPoint)movie/top_rated?api_key=\(Constants.apiKey)"
+        Alamofire.request(urlString).responseString { (response) in
+            let movie = Mapper<Movie>().map(JSONString: response.value!)
+            print(movie?.backdrop_path!)
+        }
     }
 }

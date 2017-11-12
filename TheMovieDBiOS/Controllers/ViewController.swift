@@ -12,8 +12,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let viewModal: MovieViewModel = MovieViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModal.getMovies { (success) in
+            print("response time")
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
