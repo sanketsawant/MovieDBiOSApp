@@ -9,6 +9,7 @@ target 'TheMovieDBiOS' do
 	pod 'Alamofire'
     pod 'ObjectMapper', '~> 3.0.0'
     pod 'AlamofireObjectMapper', '~> 5.0'
+     pod 'AlamofireImage', '~> 3.3'
 
   target 'TheMovieDBiOSTests' do
     inherit! :search_paths

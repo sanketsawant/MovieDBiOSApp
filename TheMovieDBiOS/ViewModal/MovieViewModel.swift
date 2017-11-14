@@ -22,11 +22,9 @@ class MovieViewModel {
             switch response.result {
             case .success:
                 self.movies = response.result.value ?? []
-                for project in self.movies {
-                    print(project.poster_path!)
-                }
+                completion(true)
             case .failure(let error):
-                print(error)
+                completion(false)
             }
         }
         
