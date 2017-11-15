@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MEj-Zt-m4M">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WXh-tA-zcw">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vZU-xx-DVb">
                                     <size key="itemSize" width="170" height="216"/>
@@ -28,16 +28,16 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieDetailsCell" id="ylj-m4-R2k" customClass="MovieDetailsCustomCell" customModule="TheMovieDBiOS" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="167" height="216"/>
+                                        <rect key="frame" x="10" y="10" width="150" height="216"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="167" height="216"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="216"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qg0-58-QMn">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qg0-58-QMn">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="172"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reB-h4-ToO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reB-h4-ToO">
                                                     <rect key="frame" x="0.0" y="172" width="167" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="gc2-RK-Xvj"/>
@@ -48,7 +48,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="reB-h4-ToO" secondAttribute="trailing" id="4tQ-Nl-41k"/>
                                             <constraint firstItem="reB-h4-ToO" firstAttribute="leading" secondItem="ylj-m4-R2k" secondAttribute="leading" id="Osc-W5-OKL"/>
@@ -58,7 +58,7 @@
                                             <constraint firstItem="qg0-58-QMn" firstAttribute="top" secondItem="ylj-m4-R2k" secondAttribute="top" id="qbI-ap-7JX"/>
                                             <constraint firstItem="reB-h4-ToO" firstAttribute="top" secondItem="qg0-58-QMn" secondAttribute="bottom" id="thR-21-BVo"/>
                                         </constraints>
-                                        <size key="customSize" width="167" height="216"/>
+                                        <size key="customSize" width="150" height="216"/>
                                         <connections>
                                             <outlet property="originalTitle" destination="reB-h4-ToO" id="PCl-Mx-mYI"/>
                                             <outlet property="posterImage" destination="qg0-58-QMn" id="oiW-fu-40c"/>
@@ -76,13 +76,32 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Foa-2K-UyB"/>
                     <connections>
                         <outlet property="movieCollectionView" destination="WXh-tA-zcw" id="URU-UC-WJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-422" y="-75"/>
+            <point key="canvasLocation" x="-84" y="-75.112443778110944"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bcc-Sa-kVy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MEj-Zt-m4M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tgR-fE-ToB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5ft-WP-oJ2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bLa-nJ-ul7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-862" y="-75"/>
         </scene>
     </scenes>
 </document>

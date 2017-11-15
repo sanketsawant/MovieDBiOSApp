@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MovieDetailsCustomCell: UICollectionViewCell {
     @IBOutlet weak var posterImage: UIImageView!

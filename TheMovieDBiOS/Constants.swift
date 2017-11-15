@@ -10,5 +10,6 @@ import Foundation
 
 struct Constants {
     static let urlPoint = "https://api.themoviedb.org/3/"
+    static let imageUrlPoint = "https://image.tmdb.org/t/p/w150/"
     static let apiKey = "32544dcecda2bdca39eca9d56e825469"
 }
