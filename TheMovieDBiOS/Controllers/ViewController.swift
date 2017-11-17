@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var movieCollectionView: UICollectionView!
@@ -22,6 +20,7 @@ class ViewController: UIViewController {
         self.movieCollectionView.dataSource = self
         self.movieCollectionView.delegate = self
         self.loadData()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +47,7 @@ extension ViewController:UICollectionViewDelegate,UICollectionViewDataSource,UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieDetailsCustomCell
         cell.backgroundColor = UIColor.white
-        cell.originalTitle.text = "\(indexPath.row)"//viewModal.movies[indexPath.row].original_title
+        cell.originalTitle.text = viewModal.movies[indexPath.row].original_title
         let posterPath = viewModal.movies[indexPath.row].poster_path!
         cell.posterImage.af_setImage(withURL: URL.init(string: "\(Constants.imageUrlPoint)\(posterPath)")!)
         return cell
@@ -66,7 +65,22 @@ extension ViewController:UICollectionViewDelegate,UICollectionViewDataSource,UIC
         return 5
     }
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionElementKindSectionFooter {
+            self.viewModal.calculateNextPage()
+            self.loadData()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionElementKindSectionFooter {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind,                                                                       withReuseIdentifier: "MovieCollectionViewFooter",for: indexPath) as! MovieCollectionFooterView
+            headerView.loadingIndicator.stopAnimating()
+        }
+
+    }
+/*    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
         for cell in self.movieCollectionView.visibleCells {
             let indexPath = self.movieCollectionView.indexPath(for: cell)
             print("\(String(describing: indexPath?.row))     \(self.viewModal.movies.count)")
@@ -76,6 +90,23 @@ extension ViewController:UICollectionViewDelegate,UICollectionViewDataSource,UIC
             }
             // here add the code whatever you want to do
         }
+    }
+*/
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+             return UICollectionReusableView.init()
+        case UICollectionElementKindSectionFooter:
+            //3
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                             withReuseIdentifier: "MovieCollectionViewFooter",
+                                                                             for: indexPath) as! MovieCollectionFooterView
+            return headerView
+
+        default:
+            assert(false, "Unexpected element kind")
+        }
+        return UICollectionReusableView.init()
     }
 
 }
